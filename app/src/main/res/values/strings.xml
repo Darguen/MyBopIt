@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyBopIt</string>
+    <string name="app_description">Este proyecto es un piloto para evaluar la factibilidad de poder desarrollar dentro de Android una aplicacion que implemente un juego que emule el conocido bop it</string>
 </resources>
