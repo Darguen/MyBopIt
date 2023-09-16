@@ -25,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
         //val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         // Read a preference
-        val value = sharedPreferences.getString("splash_time", "1000")
+        val value = sharedPreferences.getString("splash_time", "3000")
 
         Log.i(tagLog,"Value of splash_time:" + value)
 
