@@ -7,10 +7,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Button
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.NotificationCompat
 
 class MainActivity : AppCompatActivity() {
@@ -46,11 +43,18 @@ class MainActivity : AppCompatActivity() {
         notificationManager.notify(NOTIFICATION_ID, notification)
 
 
-        val buttonOKAbout = findViewById<Button>(R.id.aboutButton)
+        val buttonAbout = findViewById<Button>(R.id.backButton)
+        val buttonPreferences = findViewById<Button>(R.id.PreferencesButton)
+        //val buttonHistory = findViewById<Button>(R.id.HistoryButton)
+        //val buttonInstructions = findViewById<Button>(R.id.InstructionsButton)
 
         // Button click listeners
-        buttonOKAbout.setOnClickListener {
+        buttonAbout.setOnClickListener {
             val intentAbout = Intent(this, AboutActivity::class.java)
+            startActivity(intentAbout)
+        }
+        buttonPreferences.setOnClickListener {
+            val intentAbout = Intent(this, SettingsActivity::class.java)
             startActivity(intentAbout)
         }
 

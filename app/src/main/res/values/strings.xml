@@ -25,5 +25,19 @@
     <string name="splash_title">Duración Inicio</string>
     <string name="splash_description">Duracion de la pantalla de presentación</string>
 
+    <!-- Menu buttons -->
+    <string name="AboutButton">About</string>
+    <string name="PreferencesButton">Preferences</string>
+    <string name="HistoryButton">History</string>
+    <string name="InstructionsButton">Instructions</string>
+
+    <string name="BacksButton">Back</string>
+
+    <!-- Settings -->
+    <string name="Username">Ingrese su nombre</string>
+    <string name="Score">99</string>
+    <string name="HighScore">Puntaje mas alto</string>
+    <string name="DefaultPresets">Restablecer valores predeterminados</string>
+
 
 </resources>
