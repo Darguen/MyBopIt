@@ -8,15 +8,15 @@ import android.widget.Button
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
+        setContentView(R.layout.activity_main)
 
-        /*val buttonOKAbout = findViewById<Button>(R.id.mainButton)
+        val buttonOKAbout = findViewById<Button>(R.id.mainButton)
 
         // Button click listeners
         buttonOKAbout.setOnClickListener {
             val intentAbout = Intent(this, AboutActivity::class.java)
             startActivity(intentAbout)
-        }*/
+        }
     }
 
     //val button:
