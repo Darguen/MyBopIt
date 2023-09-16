@@ -11,7 +11,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import androidx.preference.PreferenceManager
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -23,8 +22,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
 
         // Getting preference
-        //val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
+        //val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         // Read a preference
         val value = sharedPreferences.getString("splash_time", "1000")
 
@@ -42,7 +41,7 @@ class SplashScreenActivity : AppCompatActivity() {
         animationSet.addAnimation(scaleUp)
 
 
-        val imageView = findViewById<ImageView>(R.id.imageReactions)
+        val imageView = findViewById<ImageView>(R.id.imageMyBopIt)
 
         fadeIn.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation?) {
