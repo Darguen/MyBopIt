@@ -5,6 +5,8 @@
         de poder desarrollar dentro de Android una aplicacion que implemente un
         juego que emule el conocido bop it</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="button_activity_victory">Victory</string>
+
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

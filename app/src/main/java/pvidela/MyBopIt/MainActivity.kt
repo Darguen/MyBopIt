@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         val buttonPreferences = findViewById<Button>(R.id.PreferencesButton)
         //val buttonHistory = findViewById<Button>(R.id.HistoryButton)
         //val buttonInstructions = findViewById<Button>(R.id.InstructionsButton)
+        val buttonVictory = findViewById<Button>(R.id.VictoryButton)
 
         // Button click listeners
         buttonAbout.setOnClickListener {
@@ -55,6 +56,10 @@ class MainActivity : AppCompatActivity() {
         }
         buttonPreferences.setOnClickListener {
             val intentAbout = Intent(this, SettingsActivity::class.java)
+            startActivity(intentAbout)
+        }
+        buttonVictory.setOnClickListener {
+            val intentAbout = Intent(this, VictoryActivity::class.java)
             startActivity(intentAbout)
         }
 
