@@ -4,7 +4,11 @@ import android.media.MediaPlayer
 import android.media.PlaybackParams
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 
 class VictoryActivity : AppCompatActivity() {
     private lateinit var mediaPlayerVictory: MediaPlayer
@@ -12,10 +16,20 @@ class VictoryActivity : AppCompatActivity() {
     private lateinit var mediaPlayerGame: MediaPlayer
     private var playbackParams: PlaybackParams? = null
 
+    //gesture detection
+    private lateinit var gestureDetector: GestureDetector
+    private lateinit var textViewTouchEvent: TextView
+    //private lateinit var touchEventHistory: ArrayList<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_victory)
+
+        //gesture detection
+        gestureDetector = GestureDetector(this, GestureListener())
+
+        textViewTouchEvent = findViewById(R.id.textViewTouchEvent)
 
         mediaPlayerVictory = MediaPlayer.create(this, R.raw.success)
         mediaPlayerDefeat = MediaPlayer.create(this, R.raw.gameover)
@@ -99,5 +113,56 @@ class VictoryActivity : AppCompatActivity() {
         mediaPlayerVictory.release()
         mediaPlayerDefeat.release()
         mediaPlayerGame.release()
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        gestureDetector.onTouchEvent(event)
+        return super.onTouchEvent(event)
+    }
+
+
+    //gesture detection class
+    inner class GestureListener : GestureDetector.SimpleOnGestureListener() {
+        /*override fun onDown(e: MotionEvent): Boolean {
+            showToast("onDown")
+            return true
+        }*/
+
+       /* override fun onSingleTapUp(e: MotionEvent): Boolean {
+            showToast("onSingleTapUp")
+            return true
+        }*/
+
+        override fun onLongPress(e: MotionEvent) {
+            showToast("onLongPress")
+
+        }
+
+        override fun onDoubleTap(e: MotionEvent): Boolean {
+            showToast("onDoubleTap")
+            return super.onDoubleTap(e)
+        }
+
+        override fun onFling(
+            e1: MotionEvent?,
+            e2: MotionEvent,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
+            showToast("onFling")
+            return true
+        }
+
+       /* override fun onScroll(
+            e1: MotionEvent, e2: MotionEvent,
+            distanceX: Float, distanceY: Float
+        ): Boolean {
+            showToast("onScroll")
+            return true
+        }*/
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
