@@ -34,7 +34,7 @@ class VictoryActivity : AppCompatActivity() {
         textViewTouchEvent = findViewById(R.id.textViewTouchEvent)
 
         mediaPlayerVictory = MediaPlayer.create(this, R.raw.success)
-        mediaPlayerDefeat = MediaPlayer.create(this, R.raw.gameover)
+        mediaPlayerDefeat = MediaPlayer.create(this, R.raw.defeat)
         mediaPlayerGame = MediaPlayer.create(this, R.raw.gameloop)
         playbackParams = mediaPlayerVictory.playbackParams
 
