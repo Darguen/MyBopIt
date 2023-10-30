@@ -10,6 +10,7 @@
     <string name="GameSound">Game Sound</string>
     <string name="play">Play</string>
     <string name="stop">Stop</string>
+    <string name="speedUp">Speed Up</string>
     <string name="Sounds">Sounds</string>
 
     <!-- Preference Titles -->

@@ -16,6 +16,8 @@ class VictoryActivity : AppCompatActivity() {
     private lateinit var mediaPlayerGame: MediaPlayer
     private var playbackParams: PlaybackParams? = null
 
+    private val speedChange = 0.2f
+
     //gesture detection
     private lateinit var gestureDetector: GestureDetector
     private lateinit var textViewTouchEvent: TextView
@@ -77,21 +79,31 @@ class VictoryActivity : AppCompatActivity() {
         val buttonGameStop = findViewById<Button>(R.id.buttonGameLoopStop)
         buttonGameStop.setOnClickListener {
             if (mediaPlayerGame.isPlaying) {
+                resetPlaybackSpeed()
                 mediaPlayerGame.pause()
                 mediaPlayerGame.seekTo(0)
+
+            }
+        }
+
+        val buttonGameSpeedUp = findViewById<Button>(R.id.buttonGameLoopSpeedUp)
+
+        buttonGameSpeedUp.setOnClickListener {
+            if (mediaPlayerGame.isPlaying) {
+                changePlaybackSpeed(speedChange)
             }
         }
     }
 
-    /*private fun changePlaybackSpeed(speedChange: Float) {
+    private fun changePlaybackSpeed(speedChange: Float) {
         playbackParams?.setSpeed(playbackParams!!.speed + speedChange)
-        mediaPlayer.playbackParams = playbackParams!!
+        mediaPlayerGame.playbackParams = playbackParams!!
     }
 
     private fun resetPlaybackSpeed() {
         playbackParams?.setSpeed(1.0f)
-        mediaPlayer.playbackParams = playbackParams!!
-    }*/
+        mediaPlayerGame.playbackParams = playbackParams!!
+    }
 
     /*override fun onPause() {
         super.onPause()
