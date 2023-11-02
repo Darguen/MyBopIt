@@ -13,6 +13,7 @@
     <string name="speedUp">Speed Up</string>
     <string name="Sounds">Sounds</string>
     <string name="Sensors">Sensors</string>
+    <string name="Game">Game</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         //val buttonInstructions = findViewById<Button>(R.id.InstructionsButton)
         val buttonVictory = findViewById<Button>(R.id.VictoryButton)
         val buttonSensors = findViewById<Button>(R.id.Sensors)
+        val buttonGame = findViewById<Button>(R.id.gameButton)
 
         // Button click listeners
         buttonAbout.setOnClickListener {
@@ -67,6 +68,11 @@ class MainActivity : AppCompatActivity() {
 
         buttonSensors.setOnClickListener {
             val intentAbout = Intent(this, SensorDetectionActivity::class.java)
+            startActivity(intentAbout)
+        }
+
+        buttonGame.setOnClickListener {
+            val intentAbout = Intent(this, GameActivity::class.java)
             startActivity(intentAbout)
         }
 
