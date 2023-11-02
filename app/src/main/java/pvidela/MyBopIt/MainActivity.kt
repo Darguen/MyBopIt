@@ -1,5 +1,6 @@
 package pvidela.MyBopIt
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         //val buttonHistory = findViewById<Button>(R.id.HistoryButton)
         //val buttonInstructions = findViewById<Button>(R.id.InstructionsButton)
         val buttonVictory = findViewById<Button>(R.id.VictoryButton)
+        val buttonSensors = findViewById<Button>(R.id.Sensors)
 
         // Button click listeners
         buttonAbout.setOnClickListener {
@@ -60,6 +62,11 @@ class MainActivity : AppCompatActivity() {
         }
         buttonVictory.setOnClickListener {
             val intentAbout = Intent(this, VictoryActivity::class.java)
+            startActivity(intentAbout)
+        }
+
+        buttonSensors.setOnClickListener {
+            val intentAbout = Intent(this, SensorDetectionActivity::class.java)
             startActivity(intentAbout)
         }
 
