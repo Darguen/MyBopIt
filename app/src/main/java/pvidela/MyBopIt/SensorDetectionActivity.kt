@@ -7,7 +7,9 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import kotlin.math.sqrt
 
 class SensorDetectionActivity : AppCompatActivity(), SensorEventListener {
@@ -16,6 +18,9 @@ class SensorDetectionActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorListTextView: TextView
     private var accelerometer: Sensor? = null
     private lateinit var accelerometerText: TextView
+    private lateinit var addThreshold: Button
+    private lateinit var reduceThreshold: Button
+    private  var threshold = 10.0f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sensor_detection)
@@ -27,30 +32,24 @@ class SensorDetectionActivity : AppCompatActivity(), SensorEventListener {
         //val aSensor: Sensor? = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         sensorListTextView = findViewById(R.id.sensorListTextView)
         accelerometerText = findViewById(R.id.accelerometer)
+        addThreshold = findViewById(R.id.addThreshold)
+        reduceThreshold = findViewById(R.id.reduceThreshold)
 
-        // Get the list of available sensors
-        val sensorList = sensorManager!!.getSensorList(Sensor.TYPE_ALL)
+        addThreshold.setOnClickListener{
 
-        // Display the list of sensors
-        val sensorInfoList = StringBuilder()
-        for (sensor in sensorList) {
-            sensorInfoList.append("${sensor.name} (${sensor.typeToString()})\n")
+            threshold++
+
         }
-        sensorListTextView.text = sensorInfoList.toString()
+
+        reduceThreshold.setOnClickListener{
+            threshold--
+        }
+
+
+
 
     }
 
-    private fun Sensor.typeToString(): String {
-        return when (this.type) {
-            Sensor.TYPE_ACCELEROMETER -> "Accelerometer"
-            Sensor.TYPE_GYROSCOPE -> "Gyroscope"
-            Sensor.TYPE_PROXIMITY -> "Proximity"
-            Sensor.TYPE_MAGNETIC_FIELD -> "Magnetometer (Compass)"
-            Sensor.TYPE_LIGHT -> "Light"
-            // Add more sensor types as needed
-            else -> "Unknown Sensor"
-        }
-    }
 
     override fun onResume() {
         super.onResume()
@@ -73,13 +72,22 @@ class SensorDetectionActivity : AppCompatActivity(), SensorEventListener {
             val z = event.values[2]
             val acceleration = sqrt(x * x + y * y + z * z.toDouble()).toFloat()
 
-            accelerometerText.text = ("x: " + x.toString() + "y: " + y.toString() + "z: " + z.toString())
+            accelerometerText.text = ("x:" + x + " y: " + y + " z: " + z)
 
             // You can adjust the acceleration threshold based on your needs
-            val threshold = 10.0f
+
+
+            if(acceleration > threshold){
+                showToast("Shaked")
+            }
+
 
 
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
 }
