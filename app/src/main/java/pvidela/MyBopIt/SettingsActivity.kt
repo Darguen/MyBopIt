@@ -1,35 +1,26 @@
 package pvidela.MyBopIt
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import pvidela.MyBopIt.GameActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceFragmentCompat
 
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var scoreTextView: TextView
-    private val gameActivity = GameActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
-
-        val buttonBack = findViewById<Button>(R.id.backButtonSettings)
-        buttonBack.setOnClickListener {
-            val intentAbout = Intent(this, MainActivity::class.java)
-            startActivity(intentAbout)
+        setContentView(R.layout.settings_activity)
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.settings, SettingsFragment())
+                .commit()
         }
-
-        scoreTextView = findViewById(R.id.scoreNumber)
-        //showMaxScore()
-
-
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun showMaxScore(){
-        scoreTextView.text = gameActivity.setMaxScore().toString()
+    class SettingsFragment : PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.root_preferences, rootKey)
+        }
     }
-
 }

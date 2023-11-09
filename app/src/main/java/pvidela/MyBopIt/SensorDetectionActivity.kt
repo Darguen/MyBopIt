@@ -7,6 +7,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -78,7 +79,8 @@ class SensorDetectionActivity : AppCompatActivity(), SensorEventListener {
 
 
             if(acceleration > threshold){
-                showToast("Shaked")
+                Log.i("ValidacionOnSensorChange", acceleration.toString() + " > " + threshold.toString())
+               // showToast("Shaked")
             }
 
 

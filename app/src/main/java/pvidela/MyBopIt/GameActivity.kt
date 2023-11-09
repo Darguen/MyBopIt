@@ -11,11 +11,13 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
+import android.preference.PreferenceManager
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.widget.Chronometer
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.edit
 import java.util.Timer
 import kotlin.math.sqrt
 import kotlin.random.Random
@@ -54,6 +56,10 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         setContentView(R.layout.activity_game)
 
         wordListTextView = findViewById(R.id.instructionsText)
+
+
+
+
 
 
 
@@ -132,11 +138,14 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         return super.onTouchEvent(event)
     }
 
-    fun setMaxScore(): Int{
+    fun setMaxScore(){
 
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val highScores = sharedPreferences.getString("highScore", "0")
         maxScore = score
-        showToast(maxScore.toString())
-        return maxScore
+        sharedPreferences.edit().putInt(highScores ,maxScore)
+        sharedPreferences.edit().commit()
+
 
     }
 
@@ -149,6 +158,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 score++
                 showToast("score: " + score)
                 elapsedTime = 0
+                wordListTextView.text = showWord()
             }
             return true
         }
@@ -158,6 +168,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 score++
                 showToast("score: " + score)
                 elapsedTime = 0
+                wordListTextView.text = showWord()
             }
             super.onLongPress(e)
         }
@@ -167,6 +178,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 score++
                 showToast("score: " + score)
                 elapsedTime = 0
+                wordListTextView.text = showWord()
             }
             return true
         }
@@ -181,6 +193,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 score++
                 showToast("score: " + score)
                 elapsedTime = 0
+                wordListTextView.text = showWord()
             }
             return true
         }

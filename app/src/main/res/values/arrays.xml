@@ -20,4 +20,11 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="high_scores_to_show">
+        <item> 0</item>
+    </string-array>
+    <string-array name="high_scores">
+        <item> 0</item>
+    </string-array>
 </resources>
