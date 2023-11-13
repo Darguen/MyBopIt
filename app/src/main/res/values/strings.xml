@@ -13,7 +13,10 @@
     <string name="speedUp">Speed Up</string>
     <string name="Sounds">Sounds</string>
     <string name="Sensors">Sensors</string>
-    <string name="Game">Game</string>
+    <string name="Game">SinglePlayer</string>
+    <string name="Difficulty">Dificulty</string>
+    <string name="Successes">Number of Success</string>
+    <string name="gameOverText">Game Over</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -43,10 +46,10 @@
     <string name="BacksButton">Back</string>
 
     <!-- Settings -->
-    <string name="Username">Ingrese su nombre</string>
+    <string name="Username">Insert your name</string>
     <string name="Score">99</string>
-    <string name="HighScore">Puntaje mas alto</string>
-    <string name="DefaultPresets">Restablecer valores predeterminados</string>
+    <string name="HighScore">High Score</string>
+    <string name="DefaultPresets">Restore default values</string>
 
 
 </resources>

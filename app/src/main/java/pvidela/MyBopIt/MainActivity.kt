@@ -12,7 +12,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import androidx.preference.Preference
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,19 +25,12 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
         val value = sharedPreferences.getString("signature", "none")
-        val reply = sharedPreferences.getString("reply", "reply")
 
 
         if(value != "none"){
-            Toast.makeText(this, "hola" + value.toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Bienvenido " + value.toString(), Toast.LENGTH_LONG).show()
         }
 
-        if(reply.equals("reply")){
-            Toast.makeText(this, "reply", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            Toast.makeText(this, "reply to all", Toast.LENGTH_SHORT).show()
-        }
 
 
 

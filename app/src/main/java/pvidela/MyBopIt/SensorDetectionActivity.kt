@@ -80,7 +80,7 @@ class SensorDetectionActivity : AppCompatActivity(), SensorEventListener {
 
             if(acceleration > threshold){
                 Log.i("ValidacionOnSensorChange", acceleration.toString() + " > " + threshold.toString())
-               // showToast("Shaked")
+                showToast("Shaked")
             }
 
 
