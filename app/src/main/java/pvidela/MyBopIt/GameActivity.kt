@@ -34,6 +34,7 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
     private val gameOverText = "Game Over"
     private lateinit var scoreTextView: TextView
     private lateinit var highScoreTextView: TextView
+    private var highScoreText = "New High Score"
 
     private var score = 0
     private var gameOver = false
@@ -97,6 +98,8 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometer = sensorManager?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
 
+        highScoreTextView.text = ""
+
         updateText = updateTextRunnable
         updateTime = updateTimeRunnable
         handler.postDelayed(updateText, 1)
@@ -148,16 +151,15 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
                 }
 
 
-            } else {
-                if (score > maxScore) {
+            } else{
+                wordListTextView.text = gameOverText
+                scoreTextView.text = "Score: $score"
+
+                if(score > maxScore){
                     setMaxScore()
-                    highScoreTextView.text = "New high score"
+                    highScoreTextView.text = highScoreText
 
                 }
-
-                wordListTextView.text = gameOverText
-                scoreTextView.text = "Score: " + score
-
             }
 
         }
@@ -324,7 +326,6 @@ class GameActivity : AppCompatActivity(), SensorEventListener {
 
             if (!isCorrectInput && acceleration > threshold && wordToShow == "Shake") {
                 score++
-                showToast("score: $score")
                 elapsedTime = 0
                 isCorrectInput = true
                 successInputCount++
